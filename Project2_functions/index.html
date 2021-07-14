@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<div></div>
+
+		<script>
+			//function addTo adds the first parameter to the second and returns it.
+			function addTo (amount, variable) {
+				//assign the value of the sum of the value of the variable and the amount to the variable
+				variable += amount
+				
+				//return the variable
+				return variable
+			}
+
+			//set the contents of the div element to the return value of the addTo function
+			document.querySelector("div").innerHTML = addTo(5, 2)
+		</script>
+	</body>
+</html>
