@@ -2,8 +2,6 @@ function thisElts() {
 	//Assign empty arrays to two variables
 	var strings = [], numbers = [], t = document.querySelector('table')
 
-	console.log(t)
-
 	//Go through every property / method of the this object
 	for (let name in this) {
 		//Assign the type of the property / method to a variable
@@ -42,3 +40,10 @@ function inf() {
 	document.getElementById("infinity").innerHTML = `${a}: ${Number(a)}, -${a}: ${Number(-a)}`
 }
 
+//Sending lots of comparisons to the console
+console.log("something == something else:", "something" == "something else")
+console.log("1 === 2:", 1 === 2)
+console.log("5 > 2:", 5 > 2)
+console.log("5 < 2:", 5 < 2)
+console.log ("(5 > 2) && !(2 > 5):", (5 > 2) && !(2 > 5))
+console.log ("(5 > 2) || (2 > 5):", (5 > 2) || (2 > 5))
