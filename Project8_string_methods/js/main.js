@@ -1,12 +1,8 @@
-//Generate a set of five random numbers between 0 and 1000
-var numbers = Array.from(Array(5)).map(() => Math.random() * 1000)
-
-//Generate a random number between 1 and 1000
-var number = Math.random() * 1000
+var numbers, number
 
 function writeP(text) {
 	//Write the given text within a paragraph to the window.
-	document.write("<p>" + text + "</p>")
+	document.getElementsByTagName("div")[0].insertAdjacentHTML('beforeend', "<p>" + text + "</p>")
 }
 
 function joinArray(ary) {
@@ -42,10 +38,20 @@ function toPrecisionFunc(ary) {
 	writeP(`Showing elements with a precision of ${prec}: ${joinArray(ary.map((el) => el.toPrecision(prec + el.toString().split('.')[0].length)))}`)
 }
 
-concatFunc(numbers, number)
+function generateData() {
+	//Generate a set of five random numbers between 0 and 1000
+	numbers = Array.from(Array(5)).map(() => Math.random() * 1000)
 
-sliceFunc(numbers)
+	//Generate a random number between 1 and 1000
+	number = Math.random() * 1000
 
-toStringFunc(numbers)
+	document.getElementsByTagName("div")[0].innerHTML = ""
 
-toPrecisionFunc(numbers)
+	concatFunc(numbers, number)
+
+	sliceFunc(numbers)
+	
+	toStringFunc(numbers)
+	
+	toPrecisionFunc(numbers)
+}
