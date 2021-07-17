@@ -1,6 +1,6 @@
 * {box-sizing:border-box}
 
-body {
+body div:first-of-type {
 	text-align: center;
 }
 
