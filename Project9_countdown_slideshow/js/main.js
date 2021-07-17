@@ -1,6 +1,9 @@
 var slideIndex = 1;
+
+//used to store the timeout
 var timer;
 
+//Array of images
 var images = [
 	"20190720_122528.jpg",
 	"20190811_172305.jpg",
@@ -35,6 +38,7 @@ var images = [
 	"20201216_024631.jpg"
 ]
 
+//Creates a slide and dot for each of the images in the above array.
 function generateSlides() {
 	images.reverse().forEach((image, index) => {
 		var i = images.length - index
@@ -53,7 +57,8 @@ function generateSlides() {
 	})
 }
 
-function showSlides(n) {
+//Switches the slideshow to the given slide
+function showSlide(n) {
 	var i;
 	var slides = document.getElementsByClassName("mySlides")
 	var dots = document.getElementsByClassName("dot")
@@ -74,14 +79,15 @@ function showSlides(n) {
 
 // Next/previous controls
 function plusSlides(n) {
-	showSlides(slideIndex += n)
+	showSlide(slideIndex += n)
 }
 
 // Thumbnail image controls
 function currentSlide(n) {
-	showSlides(slideIndex = n)
+	showSlide(slideIndex = n)
 }
 
+//While the slider is moving, update the text field with the number it's currently set to.
 function updateSeconds() {
 	if (timer) { clearTimeout(timer) }
 	var seconds = document.getElementById('adjust').value;
@@ -94,6 +100,7 @@ function updateSeconds() {
 	}
 }
 
+//When the mouse button is released, start the countdown to the next slide.
 function setTimer(e) {
 	if (timer) { clearTimeout(timer) }
 	var seconds = document.getElementById('adjust').value;
@@ -107,6 +114,8 @@ function setTimer(e) {
 	}
 }
 
+//If there are more seconds to go, reduce the seconds by 1 and wait another second,
+//otherwise advance the slide and set another timer.
 function progressTimer() {
 	var seconds = parseInt(document.getElementById('timer').innerHTML)
 	if (seconds === 0) {
@@ -121,13 +130,14 @@ function progressTimer() {
 	console.log (seconds, document.getElementById('timer').innerHTML)
 }
 
+//Once the page loads
 window.addEventListener('load', function () {
 	generateSlides()
 
 	slideIndex = 1;
-	showSlides(slideIndex);
+	showSlide(slideIndex);
 
+	//Create event listener for the slider.
 	document.getElementById('adjust').addEventListener('change', setTimer)
-
 	document.getElementById('adjust').addEventListener('input', updateSeconds)
 })
