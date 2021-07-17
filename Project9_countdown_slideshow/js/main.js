@@ -1,4 +1,5 @@
 var slideIndex = 1;
+var timer;
 
 var images = [
 	"20190720_122528.jpg",
@@ -69,18 +70,6 @@ function showSlides(n) {
 
 	slides[slideIndex-1].style.display = "block"
 	dots[slideIndex-1].className += " active"
-
-	console.log(document.querySelector(`#slide-${slideIndex} img`))
-	console.log(document.querySelector(`#slide-${slideIndex} img`).attributes)
-	var imageWidth = document.querySelector(`#slide-${slideIndex} img`).offsetWidth;
-	var screenWidth = window.width;
-	var pxFromSide = ((screenWidth - imageWidth) / 2).toString().concat("px");
-	console.log(imageWidth, screenWidth, pxFromSide)
-	console.log(document.querySelector(".prev").style.left, document.querySelector(".prev").style.right)
-	document.querySelector(".prev").style.left = pxFromSide;
-	document.querySelector(".next").style.right = pxFromSide;
-	console.log(document.querySelector(".prev").style.left, document.querySelector(".prev").style.right)
-
 }
 
 // Next/previous controls
@@ -93,22 +82,52 @@ function currentSlide(n) {
 	showSlides(slideIndex = n)
 }
 
+function updateSeconds() {
+	if (timer) { clearTimeout(timer) }
+	var seconds = document.getElementById('adjust').value;
+	console.log("Setting duration to", seconds)
+	if (seconds === "0") {
+		document.getElementById('timer').innerHTML = "<i>Disabled</i>"
+	}
+	else {
+		document.getElementById('timer').innerHTML = document.getElementById('adjust').value;
+	}
+}
+
+function setTimer(e) {
+	if (timer) { clearTimeout(timer) }
+	var seconds = document.getElementById('adjust').value;
+	console.log("Setting duration to", seconds)
+	if (seconds === "0") {
+		document.getElementById('timer').innerHTML = "<i>Disabled</i>"
+	}
+	else {
+		document.getElementById('timer').innerHTML = document.getElementById('adjust').value;
+		progressTimer()
+	}
+}
+
+function progressTimer() {
+	var seconds = parseInt(document.getElementById('timer').innerHTML)
+	if (seconds === 0) {
+		plusSlides(1)
+		setTimer()
+	}
+	else if (seconds > 0) {
+		console.log("Progressing timer to ", seconds - 1)
+		document.getElementById('timer').innerHTML = --seconds
+		timer = setTimeout(progressTimer, 1000)
+	}
+	console.log (seconds, document.getElementById('timer').innerHTML)
+}
+
 window.addEventListener('load', function () {
 	generateSlides()
 
 	slideIndex = 1;
 	showSlides(slideIndex);
-})
 
-function countdown() {
-	var seconds = document.getElementById('seconds').value
-	
-	function tick() {
-		seconds--;
-		document.getElementById('timer').innerHTML = seconds;
-		setTimeout(tick, 1000)
-		if (seconds === -1) {
-			plusSlides(slideIndex + 1)
-		}
-	}
-}
+	document.getElementById('adjust').addEventListener('change', setTimer)
+
+	document.getElementById('adjust').addEventListener('input', updateSeconds)
+})
