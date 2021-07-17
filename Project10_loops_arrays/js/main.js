@@ -1,13 +1,22 @@
-var x = 1;
 
+//Display the times table for the value in the factor input field.
 function loop() {
-	document.write("<table>")
+	var max = parseInt(document.getElementById('factor').value)
+
+	var code = "<table>\n"
+	var x = 1
 	do {
-		document.write("<tr>")
-		for (let i = 1; i <= 10; i++) {
-			document.write(`<td>${x*i}`)
+		code += "	<tr>\n"
+		for (let y = 1; y <= max; y++) {
+			code += `		<td>${ x * y }</td>\n`
+			console.log(x, y)
 		}
-		document.write("</tr>")
+		code += "	</tr>\n"
 	}
-	while (x++ < 10)
+	while (x++ < max)
+	code += "</table>\n"
+	document.querySelector("div").innerHTML = code
 }
+
+//Add an onload event listener so the default (10) times table will load automatically.
+window.addEventListener('load', loop)
