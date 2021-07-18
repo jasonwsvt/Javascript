@@ -28,7 +28,7 @@ function placeXOrO(squareNumber) {
 		activePlayer = (activePlayer === 'X') ? 'O' : 'X'
 		
 		//This function plays placement sound.
-		audio('./media/place.mp3')
+		audio('./media/place.wav')
 		//This condition checks to see if it is computer's tern.
 		if (activePlayer === 'O') {
 			//This function disables clicking for computer choice.
@@ -84,7 +84,7 @@ function checkWinConditions() {
 	})
 	if (!winner && selectedSquares.length == 9) {
 		//This function plays the tie game sound.
-		audio('./media/tie.mp3')
+		audio('./media/tie.wav')
 		//This function sets a .3 second timer before the resetGame is called.
 		setTimeout(resetGame, 1000)
 	}
@@ -106,7 +106,7 @@ function disableClick() {
 }
 
 //This function takes a string parameter of the path you set earlier for
-//placement sound ('./media/place.mp3')
+//placement sound ('./media/place.wav')
 function audio(audioURL) {
 	//Create a new audio object and pass the path as a parameter.
 	let audio = new Audio(audioURL);
@@ -173,7 +173,7 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
 	//This line disallows clicking while the win sound is playing
 	disableClick()
 	//This line plays the win sounds.
-	audio('./media/winGame.mp3')
+	audio('./media/winGame.wav')
 	//This line calls our main animation loop.
 	animateLineDrawing()
 	//This line waits 1 second, then clears canvas, resets game, and allows clicking again.
