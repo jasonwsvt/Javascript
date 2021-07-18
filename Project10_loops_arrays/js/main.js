@@ -1,25 +1,30 @@
+//Global maximal factor
 var max
 
 //Display the times table for the value in the factor input field.
-function createTable() {
+function arrayFunction() {
 	max = parseInt(document.getElementById('factor').value)
 
 	var code = "<table>\n"
-	code += whileLoop()
+
+	//Call whileLoop function with an array consisting of 1 through the value of the factor input field
+	code += whileLoop(Array.from(new Array(max)).map((x, i) => i + 1))
+
 	code += "</table>\n"
+
 	document.querySelector("div").innerHTML = code
 }
 
-//create code for every row
-function whileLoop() {
+//create code for every row using a given array of numbers
+function whileLoop(ary) {
 	var code = ""
-	var x = 1
+	var i = 0
 	do {
 		code += "	<tr>\n"
-		code += forLoop(x, max)
+		code += forLoop(ary[i])
 		code += "	</tr>\n"
 	}
-	while (x++ < max)
+	while (++i < max)
 
 	return code
 }
