@@ -28,6 +28,8 @@ td {
 	padding: 0px;
 	width: 200px;
 	height: 200px;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 
 canvas {
@@ -37,4 +39,7 @@ canvas {
 	z-index: 10;
 	/* This property makes our canvas invisible */
 	pointer-events: none;
+}
+
+img {
 }

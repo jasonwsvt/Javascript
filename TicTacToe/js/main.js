@@ -67,7 +67,7 @@ function checkWinConditions() {
 	//Array of win conditions
 	const wcs = ["012", "345", "678", "036", "147", "258", "246", "048"]
 	const lines = [[50, 100, 558, 100], [50, 304, 558, 304], [50, 508, 558, 508],
-	               [100, 50, 304, 558], [304, 50, 304, 558], [508, 50, 508, 558],
+	               [100, 50, 100, 558], [304, 50, 304, 558], [508, 50, 508, 558],
 				   [100, 508, 510, 90], [100, 100, 512, 512]]
 	var winner;
 	//p is player, c is condition (e.g. "012"), s is square (0, 1, or 2)
@@ -116,7 +116,7 @@ function audio(audioURL) {
 
 //This function utilizes html canvas to draw win lines.
 function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
-	console.log("got here")
+	//console.log("got here")
 	//This line access our html canvas element.
 	const canvas = document.getElementById('win-lines')
 	const c = canvas.getContext('2d')
@@ -128,6 +128,8 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
 		const animationLoop = requestAnimationFrame(animateLineDrawing)
 		//This method clears content from last loop iteration.
 		c.clearRect(0, 0, 608, 608)
+		//This method starts a new path.
+		c.beginPath()
 		//This method moves to a starting point for our line.
 		c.moveTo(x1, y1)
 		//This method indicates the end point in our line.
