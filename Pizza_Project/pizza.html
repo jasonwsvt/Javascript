@@ -1,0 +1,68 @@
+<! DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Nommy Tasty Goodness Pizzeria</title>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<script src="js/main.js" defer></script>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+	</head>
+	<body>
+		<div id="menuBG">
+			<h1 style="margin:0 20px 0 20px; ">Nommy Tasty Goodness Pizzeria</h1>
+			<form id="frmMenu">
+				<div>
+					<div class="menu left">
+						<h3>Size:</h3>
+						<ul>
+							<li><input class="size" type="radio" name="Size" value="Personal Pizza">Personal</li>
+							<li><input class="size" type="radio" name="Size" value="Small Pizza">Small</li>
+							<li><input class="size" type="radio" name="Size" value="Medium Pizza">Medium</li>
+							<li><input class="size" type="radio" name="Size" value="Large Pizza" checked>Large</li>
+							<li><input class="size" type="radio" name="Size" value="Extra Large Pizza">Extra Large</li>
+						</ul>
+					</div>
+					<div class="menu right">
+						<h3>Sauces and Cheeses:</h3>
+						<ul>
+							<li><input class="sauces" type="checkbox" name="Sauce" value="Marinara" checked>Marinara Sauce</li>
+							<li><input class="sauces" type="checkbox" name="Sauce" value="Vegan Pesto">Vegan Pesto Sauce</li>
+							<li><input class="sauces" type="checkbox" name="Sauce" value="Vegan Mozzarella" checked>Vegan Mozzarella</li>
+							<li><input class="sauces" type="checkbox" name="Sauce" value="Pureed Butternut Squash">Pureed Butternut Squash</li>
+							<li><input class="sauces" type="checkbox" name="Sauce" value="Vegan Barbecue Sauce">Vegan Barbecue Sauce</li>
+						</ul>
+					</div>
+				</div>
+				<div>
+					<div class="menu bottom">
+						<h3>Veggies:</h3>
+						<ul>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Sliced Mushrooms">Diced Button Mushrooms</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Sauteed Button Mushrooms">Sauteed Button Mushrooms</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Shredded Oyster Mushrooms">Shredded Oyster Mushrooms</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Diced Sweet Potatoes">Diced Sweet Potatoes</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Sliced Tomatoes">Sliced Tomatoes</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Sundried Tomatoes">Sundried Tomatoes</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Diced Peppers">Diced Peppers</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Sauteed Peppers">Sauteed Peppers</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Garlic Cloves">Garlic Cloves</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Diced Onion">Diced Onion</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Carmelized Onion">Carmelized Onion</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Baby Spinach">Baby Spinach</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Arugala">Arugala</li>
+							<li><input class="toppings" type="checkbox" name="Topping" value="Olives">Olives</li>
+						</ul>
+					</div>
+				</div>
+				<div id="cart">
+					<div id="showText"></div>
+					<div id="order">
+						<div id="totalPrice"></div>
+						<input id="btnorder" type="button" onclick="getReceipt()" value="Place Order">
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
+	

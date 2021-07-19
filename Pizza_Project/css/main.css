@@ -1,0 +1,103 @@
+body {
+	display:flex;
+	background-image: url(../images/randy-fath-5aJVJvJ9rG8-unsplash.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	align-items: flex-start center;
+	vertical-align: top;
+}
+
+h1 {
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	color: midnightblue;
+}
+
+h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	color:darkseagreen;
+	text-align: center;
+}
+
+div {
+	font-family: Arial, Helvetica, sans-serif;
+	color: antiquewhite;
+}
+
+#menuBG {
+	width: 400px;
+	height: 700px;
+	margin: 10px auto;
+}
+
+.menu {
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+}
+
+#frmMenu {
+	width: 400px;
+	background-color: rgba(150, 150, 150, .5);
+	align-items: center;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.left {
+	width: 50%;
+	float: left;
+}
+
+.right {
+	width: 50%;
+	float: right;
+}
+
+.bottom {
+	width: 400px;
+	height: 200px;
+}
+
+.bottom ul {
+	width: 100%;
+	column-width: 220px;
+	columns: 2;
+}
+
+#cart {
+	display: flex;
+	flex-direction: column;
+	top: 0;
+	margin: 0px auto;
+	width: 400px;
+	height: 200px;
+}
+
+#showText {
+	width: 200px;
+	height: 190px;
+	margin: 0px auto;
+}
+
+#order {
+	display: flex;
+	flex-direction: row;
+	height: 40px;
+}
+
+#totalPrice {
+	width: 200px;
+	margin: 0 auto;
+	vertical-align: center;
+}
+
+#btnOrder {
+	margin: auto auto;
+	width: 100px;
+	height: 40px;
+}
