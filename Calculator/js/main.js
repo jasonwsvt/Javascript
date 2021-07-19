@@ -1,42 +1,36 @@
+const operators = ["-", "+", "*", "/"]
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."]
+
 var screen = document.querySelector('input')
 
 window.addEventListener('load', function () {
 	console.log(document.getElementsByTagName('button'))
-	document.querySelector('button[value="0"]').addEventListener('click', addNumber("0"))
-	document.querySelector('button[value="1"]').addEventListener('click', addNumber("1"))
-	document.querySelector('button[value="2"]').addEventListener('click', addNumber("2"))
-	document.querySelector('button[value="3"]').addEventListener('click', addNumber("3"))
-	document.querySelector('button[value="4"]').addEventListener('click', addNumber("4"))
-	document.querySelector('button[value="5"]').addEventListener('click', addNumber("5"))
-	document.querySelector('button[value="6"]').addEventListener('click', addNumber("6"))
-	document.querySelector('button[value="7"]').addEventListener('click', addNumber("7"))
-	document.querySelector('button[value="8"]').addEventListener('click', addNumber("8"))
-	document.querySelector('button[value="9"]').addEventListener('click', addNumber("9"))
-	document.querySelector('button[value="-"]').addEventListener('click', addOperator("-"))
-	document.querySelector('button[value="+"]').addEventListener('click', addOperator("+"))
-	document.querySelector('button[value="&times;"]').addEventListener('click', addOperator("&times;"))
-	document.querySelector('button[value="&divide;"]').addEventListener('click', addOperator("&divide;"))
-	document.querySelector('button[value="="]').addEventListener('click', evaluate())
-	document.querySelector('button[value="AC"]').addEventListener('click', allClear())
+
+	//Create an event listener for each of the number buttons.
+	numbers.forEach(n => addButtonEvent(n, addNumber))
+
+	//Create an event listener for each of the operator buttons.
+	operators.forEach(o => addButtonEvent(o, addOperator))
+
+	//Create event listeners for the = and AC buttons.
+	addButtonEvent("=", evaluate)
+	addButtonEvent("all-clear", allClear)
 })
 
-function allClear() {
-	screen.value = ""
-	last = ""
+//Add an event listener for the button with the given value that runs the given function with that value.
+//The evaluate and allClear functions don't take any arguments, but being given one won't make a difference.
+function addButtonEvent(value, func) {
+	console.log(value, func)
+	document.querySelector(`button[value='${value}']`).addEventListener('click', () => func(value))
 }
 
-function addNumber(num) {
-	if (screen.value == "0") { screen.value = "" }
-	screen.value += num
-	last = "number"
-}
+//Function returns whether or not the last character of the screen value is an operator or a number.
+var last = () => operators.includes(screen.value.charAt(screen.value.length - 1)) ? "operator": "number"
 
-function addOperator(oper) {
-	if (last == "operator") { return; }
-	screen.value += oper
-	last = "operator"
-}
+var allClear = () => screen.value = ""
 
-function evaluate() {
+var addNumber = (num) => screen.value += num
 
-}
+var addOperator = (oper) => screen.value += (last() != "operator") ? oper : ""
+
+var evaluate = () => screen.value = eval(screen.value)
