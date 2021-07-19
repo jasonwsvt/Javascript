@@ -12,12 +12,16 @@ h1 {
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
 	color: midnightblue;
+	margin: 0 20px 0 20px;
 }
 
 h3 {
+	display: block;
 	font-family: Arial, Helvetica, sans-serif;
-	color:darkseagreen;
+	color:darkgreen;
+	font-weight: bold;
 	text-align: center;
+	margin: 0;
 }
 
 div {
@@ -26,8 +30,8 @@ div {
 }
 
 #menuBG {
-	width: 400px;
-	height: 700px;
+	width: 500px;
+	height: 800px;
 	margin: 10px auto;
 }
 
@@ -38,14 +42,15 @@ div {
 }
 
 #frmMenu {
-	width: 400px;
-	background-color: rgba(150, 150, 150, .5);
+	width: 500px;
+	background-color: rgba(150, 150, 150, .6);
 	align-items: center;
 }
 
 ul {
     padding: 0;
     list-style-type: none;
+	margin: 5px 0;
 }
 
 .left {
@@ -59,13 +64,13 @@ ul {
 }
 
 .bottom {
-	width: 400px;
-	height: 200px;
+	width: 500px;
+	height: 175px;
 }
 
 .bottom ul {
 	width: 100%;
-	column-width: 220px;
+	column-width: 270px;
 	columns: 2;
 }
 
@@ -74,15 +79,27 @@ ul {
 	flex-direction: column;
 	top: 0;
 	margin: 0px auto;
-	width: 400px;
-	height: 200px;
+	width: 500px;
+	height: 260px;
 }
 
 #showText {
-	width: 200px;
-	height: 190px;
+	width: 500px;
+	height: 220px;
 	margin: 0px auto;
 }
+/*
+#showText li {
+	font-size: 14px;
+}*/
+
+#showText ul {
+	width: 100%;
+	column-width: 270px;
+	columns: 2;
+    padding: 0;
+    list-style-type: none;
+	margin: 5px 0;}
 
 #order {
 	display: flex;
@@ -91,13 +108,13 @@ ul {
 }
 
 #totalPrice {
-	width: 200px;
+	width: 250px;
 	margin: 0 auto;
 	vertical-align: center;
 }
 
 #btnOrder {
-	margin: auto auto;
+	margin-right: 0;
 	width: 100px;
 	height: 40px;
 }
