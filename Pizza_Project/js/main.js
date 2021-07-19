@@ -1,10 +1,12 @@
-function getReceipt () {
+//Function called when order button is pressed
+function getReceipt() {
 	// This initializes our string so it can get passed from
 	// function to function, growing line by line into a full receipt
-	document.getElementById("cart").insertAdjacentHTML("afterbegin", "<h3>Your order:</h3>");
 	var text1 = "";
 	var runningTotal = 0
 	var sizeTotal = 0
+	// Add the title at the beginning of the cart div.
+	document.getElementById("cart").insertAdjacentHTML("afterbegin", "<h3>Your order:</h3>")
 	var sizeArray = document.getElementsByClassName("size")
 	for (var i = 0; i < sizeArray.length; i++) {
 		if (sizeArray[i].checked) {
@@ -13,13 +15,13 @@ function getReceipt () {
 		}
 	}
 
-	sizeTotal = (selectedSize === "Personal Pizza") ? 6
-	          : (selectedSize === "Small Pizza")    ? 8
-			  : (selectedSize === "Medium Pizza")   ? 10
-			  : (selectedSize === "Large Pizza")    ? 14
-			  : 16 // (selectedSize === "Extra Large Pizza")
+	sizeTotal = (selectedSize === "Personal Pizza") ? 4
+	          : (selectedSize === "Small Pizza")    ? 6
+			  : (selectedSize === "Medium Pizza")   ? 8
+			  : (selectedSize === "Large Pizza")    ? 12
+			  : 14 // (selectedSize === "Extra Large Pizza")
 
-  runningTotal = sizeTotal
+  	runningTotal = sizeTotal
 	console.log(selectedSize + " = $" + sizeTotal + ".00")
 	console.log("size text1: " + text1)
 	console.log("subtotal: $" + runningTotal + ".00")
@@ -28,10 +30,13 @@ function getReceipt () {
 	getTopping(runningTotal, text1)
 }
 
+// Function calculates the total cost for all toppings and sauces.
 function getTopping(runningTotal, text1) {
 	var sauceTotal = 0
 	var selectedSauce = []
 	var sauceArray = document.getElementsByClassName("sauces")
+
+	//Propagate a string with all the selected sauces
 	for (var j = 0; j < sauceArray.length; j++) {
 		if (sauceArray[j].checked) {
 			selectedSauce.push(sauceArray[j].value)
@@ -39,11 +44,14 @@ function getTopping(runningTotal, text1) {
 			text1 += `<li>${sauceArray[j].value}</li>`
 		}
 	}
-	runningTotal += sauceTotal
-	
+
+	//Add the cost of the sauces (1 per sauce) to the total
+	runningTotal += selectedSauce.length
 	var toppingTotal = 0
 	var selectedTopping = []
 	var toppingArray = document.getElementsByClassName("toppings")
+
+	//Propagate a string with all the selected toppings
 	for (var j = 0; j < toppingArray.length; j++) {
 		if (toppingArray[j].checked) {
 			selectedTopping.push(toppingArray[j].value)
@@ -51,14 +59,20 @@ function getTopping(runningTotal, text1) {
 			text1 += `<li>${toppingArray[j].value}</li>`
 		}
 	}
+
+	//Create a list of all the sauces and toppings.
 	text1 = `<ul>${text1}</ul>`
 	var toppingCount = selectedTopping.length
+
+	//One topping is included for free
 	toppingTotal = (toppingCount > 1) ? toppingCount - 1 : 0
 	runningTotal += toppingTotal
 	console.log ("total selected topping items: " + toppingCount)
 	console.log (toppingCount + " topping - 1 free topping = " + "$" + toppingTotal + ".00")
 	console.log ("topping text1: " + text1)
 	console.log ("Purchase Total: " + "$" + runningTotal + ".00")
+
+	//Push the list of sauces and toppings, along with the total, to the page.
 	document.getElementById("showText").innerHTML = text1
 	document.getElementById("totalPrice").innerHTML = "<h3>Total: <strong>$" + runningTotal + ".00" + "</strong></h3>"
 }
