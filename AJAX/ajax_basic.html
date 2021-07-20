@@ -12,16 +12,23 @@
 				<input type="button" class="button" value="Get Content" id="btn_content" onclick="getContent();"/>
 			</div>
 		<script type="text/javascript">
+			//Do first thre steps of an AJAX request before the button above is clicked:
+			//1) Create a new AJAX request object
 			var ajax = new XMLHttpRequest()
+			//2) Tell AJAX what to do when sent: retrieve content.html using GET
 			ajax.open('GET', 'content.html')
+			//3) Create the event callback for when the readystate changes to 4
 			ajax.onreadystatechange = function() {
 				if (ajax.readyState == 4) {
+					//Add the contents of the content.html page to the content element.
 					document.getElementById('content').innerHTML = ajax.responseText
 				}
 			}
 
 			function getContent() {
+				//When the button above is clicked, actually send the request.
 				ajax.send()
+				//Hide the button
 				document.getElementById('btn_content').style.display = 'none'
 			}
 		</script>
