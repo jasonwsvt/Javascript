@@ -8,6 +8,7 @@
 	<body>
 		<script>
 			$(document).ready(() => {
+				//Just like document.querySelector("html").insertAdjacentHTML
 				$("html").append(
 					"<body>\
 						<div id='container'>\
@@ -20,7 +21,9 @@
 						</div>\
 					</body>"
 				)
+				//Make the second p tag contents red
 				$("p:nth-of-type(2)").css({"color": "red"})
+				//When the third p tag is clicked, hide the h1 tag
 				$("p:nth-of-type(3)").click(function () { $("h1").hide() })
 			})
 	</script>
