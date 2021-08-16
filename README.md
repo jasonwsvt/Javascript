@@ -1,9 +1,5 @@
-# Javascript_Projects
-Code written for the Javascript Course at The Tech Academy
-
-Ones I particularly like are Calculator, Lightbox_Project, Project9_countdown_slideshow, and TicTacToe.
 <h1>Javascript Course</h1>
-These are projects written in Javascript, HTML, and CSS for the Tech Academy Software Developer Bootcamp.  They use various libraries such as Bootstrap, sqlite3, and Django.  Here are the highlights:
+These are projects written in Javascript, HTML, and CSS for the Tech Academy Software Developer Bootcamp.  Here are the highlights:
 <ul>
   <li><a href="https://github.com/jasonwsvt/Javascript_Projects/tree/main/Javascript_Calculator"> - A basic calculator.</a></li>
   <li><a href="https://github.com/jasonwsvt/Javascript_Projects/tree/main/Calculator"> - A slightly more advanced calculator.</a></li>
